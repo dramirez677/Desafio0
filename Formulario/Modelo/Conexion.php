@@ -75,6 +75,7 @@ class Conexion {
         $val4 = $email;
         $val5 = $tlf;
         $val6 = $password;
+        
 
         return mysqli_stmt_execute($stmt);
     }

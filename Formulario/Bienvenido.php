@@ -21,16 +21,12 @@ and open the template in the editor.
         require 'Modelo/Conexion.php';
         require 'Modelo/Usuario.php';
         session_start();
-        //error_reporting(0);
+        error_reporting(0);
 
-        $usuario = $_REQUEST["usuario"];
-        $password = $_REQUEST["password"];
-        $index = $_REQUEST["aceptar"];
-        $registro = $_REQUEST["registrar"];
-        
-        echo 'prueba';
-        
-        $passhash = base64_encode($password);
+        $usuario = $_REQUEST['usuario'];
+        $password = $_REQUEST['password'];
+        $index = $_REQUEST['aceptar'];
+        $registro = $_REQUEST['registrar'];
 
 
         //si vengo de index.php
@@ -66,7 +62,7 @@ and open the template in the editor.
         //si vengo de Registro.php
         else if (isset($registro)) {
 
-            $email = $_REQUEST["email"];
+            $email = $_REQUEST['email'];
 
             $conexion = new Conexion("personas", "dani", "dani");
             //relleno el cursor con los datos del registro(unicamente el email)
@@ -84,11 +80,15 @@ and open the template in the editor.
             //si no devuelve datos el cursor
             else {
                 
+                
+                //cifro la contraseña del usuario
+                $passwordcifrada = base64_encode($password);
+                
                 //si la inserccion del nuevo usuario devuelve 1 es que esta insertado correctamente
-                if ($conexion->insertar_usuario("usuario", $_REQUEST["nombre"], $_REQUEST["apellidos"], $_REQUEST["fechanacimiento"], $_REQUEST["email"], $_REQUEST["tlf"], $passhash)) {
-                    ?>c
+                if ($conexion->insertar_usuario("usuario", $_REQUEST['nombre'], $_REQUEST['apellidos'], $_REQUEST['fechanacimiento'], $_REQUEST['email'], $_REQUEST['tlf'], $passwordcifrada)) {
+                    ?>
                     <script>alert("Registrado con exito");</script>
-                    Bienvenido <?php echo $_REQUEST["email"] . $passhash; ?>
+                    Bienvenido <?php echo $_REQUEST["email"]?>
                     <?php
                 }
                 //si devuelve 0 es que ha habido un error en la inserccion

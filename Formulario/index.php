@@ -50,18 +50,20 @@ and open the template in the editor.
             <form action="Bienvenido.php" method="POST" class="form-horizontal">
 
                 <div class="form-group">
-                    Usuario<br> <input type="text" name="usuario" required class="inputslogin form-control"><br>
-                    Contraseña<br> <input type="password" name="password" required class="inputslogin form-control">
+                    Usuario<br> <input type="text" name="usuario" required class="form-control"><br>
+                    Contraseña<br> <input type="password" name="password" required class="form-control">
                 </div>
                 <a href="EnviarCorreo.php">He olvidado contraseña</a><br><br><br>
 
-                <input type="submit" name="aceptar" value="Aceptar" class="btn btn-primary inputbuttons">
-                <input type="reset" name="reset" value="Reiniciar" class="btn btn-primary inputbuttons"><br><br>
+                <div class="form-group">
+                    <input type="submit" name="aceptar" value="Aceptar" class="btn btn-primary buttonsprincipal">
+                    <input type="reset" name="reset" value="Reiniciar" class="btn btn-primary buttonsprincipal"><br><br>
+                </div>
             </form>
 
             <form action="Registro.php" method="POST">
-                <div>
-                    <input type="submit" name="registro" value="Registro" class="btn btn-primary form-control">
+                <div class="form-group">
+                    <input type="submit" name="registro" value="Registro" class="btn btn-primary">
                 </div>
             </form>
         </div>
