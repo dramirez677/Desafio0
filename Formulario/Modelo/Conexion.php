@@ -33,14 +33,14 @@ class Conexion {
         //echo "Conectado correctamente"."<br><br>";
     }
 
-    public function rellenar_cursor_login($tabla, $email, $password) {
+    public function rellenar_cursor_login($tabla, $email) {
 
         if (isset($this->result)) {
 
             mysqli_free_result($this->result);
         }
 
-        $query = "select * from " . $tabla . " where email='" . $email . "' and password='" . $password . "'";
+        $query = "select * from " . $tabla . " where email='" . $email . "'";
         return $this->result = mysqli_query($this->conexion, $query);
     }
 

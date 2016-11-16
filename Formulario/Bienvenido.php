@@ -34,29 +34,33 @@ and open the template in the editor.
 
             $conexion = new Conexion("personas", "dani", "dani");
             //relleno el cursor con los datos del login
-            $conexion->rellenar_cursor_login("usuario", $usuario, $password);
+            $conexion->rellenar_cursor_login("usuario", $usuario);
 
             //compruebo si el cursor devuelve algun dato
             if ($conexion->siguiente()) {
 
-                //creo un usuario de tipo Usuario
-                $u = new Usuario($conexion->obtener_campo("nombre"), $conexion->obtener_campo("apellidos"), $conexion->obtener_campo("fecha_nac"), $conexion->obtener_campo("email"), $conexion->obtener_campo("tlf"), $conexion->obtener_campo("password"));
+                //descodifico la contraseña de la base de datos
+                $passworddescodificada = base64_decode($conexion->obtener_campo("password"));
 
-                //guardo el usuario en la sesion
-                $_SESSION['u'] = $u;
-                ?>
+                //si la contraseña que ha introducido, $password, es igual a la contrasela desencriptada, $passworddesencriptada
+                if ($password === $passworddescodificada) {
 
-                Bienvenido <?php echo $usuario ?>
-                <?php
-            }
-            //si el cursor no devuelve ningun dato es que no esta registrado
-            else {
+                    //creo un usuario de tipo Usuario
+                    $u = new Usuario($conexion->obtener_campo("nombre"), $conexion->obtener_campo("apellidos"), $conexion->obtener_campo("fecha_nac"), $conexion->obtener_campo("email"), $conexion->obtener_campo("tlf"), $passworddescodificada);
 
-                /* guardo en la sesion una variable bienvenido para saber en la pagina
-                  index.php que vengo de Bienvenido.php para mostrar que usuario o contrase incorrectos
-                 */
-                $_SESSION['bienvenido'] = true;
-                header("Location: index.php");
+                    //guardo el usuario en la sesion
+                    $_SESSION['u'] = $u;
+                    ?>
+
+                    Bienvenido <?php echo $usuario ?>
+                    <?php
+                }
+                //si las contraseñas no son igual es que la contraseña esta mal y vuelve al index.php
+                else{
+                    
+                    $_SESSION['bienvenido'] = true;
+                    header("Location: index.php");
+                }
             }
         }
         //si vengo de Registro.php
@@ -79,16 +83,16 @@ and open the template in the editor.
             }
             //si no devuelve datos el cursor
             else {
-                
-                
+
+
                 //cifro la contraseña del usuario
                 $passwordcifrada = base64_encode($password);
-                
+
                 //si la inserccion del nuevo usuario devuelve 1 es que esta insertado correctamente
                 if ($conexion->insertar_usuario("usuario", $_REQUEST['nombre'], $_REQUEST['apellidos'], $_REQUEST['fechanacimiento'], $_REQUEST['email'], $_REQUEST['tlf'], $passwordcifrada)) {
                     ?>
                     <script>alert("Registrado con exito");</script>
-                    Bienvenido <?php echo $_REQUEST["email"]?>
+                    Bienvenido <?php echo $_REQUEST["email"] ?>
                     <?php
                 }
                 //si devuelve 0 es que ha habido un error en la inserccion
