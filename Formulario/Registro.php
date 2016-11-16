@@ -71,16 +71,21 @@ and open the template in the editor.
         session_start();
         error_reporting(0);
 
-        $bienvenidoregistro = $_SESSION['bienvenidoregistro'];
+        $cerrarsesion = $_SESSION['cerrarsesion'];
 
-        //si vengo de la pagina Bienvenido.php
-        if (isset($bienvenidoregistro)) {
-            ?>
-            <div class="errorlogin">
-                <label>Correo no disponible</label><br><br>
-            </div>
-            <?php
-            unset($_SESSION["bienvenidoregistro"]);
+        if (!isset($cerrarsesion)) {
+
+            $bienvenidoregistro = $_SESSION['bienvenidoregistro'];
+
+            //si vengo de la pagina Bienvenido.php
+            if (isset($bienvenidoregistro)) {
+                ?>
+                <div class="errorlogin">
+                    <label>Correo no disponible</label><br><br>
+                </div>
+                <?php
+                unset($_SESSION["bienvenidoregistro"]);
+            }
         }
         ?>
         <div class="divimgregistro"><img src="Imagenes/registro.png" class="imgregistro"></div>

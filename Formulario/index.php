@@ -25,6 +25,7 @@ and open the template in the editor.
 
         $bienvenido = $_SESSION['bienvenido'];
         $inicio = $_SESSION['inicio'];
+        $cerrarsesion = $_REQUEST['cerrarsesion'];
 
 
         //si vengo de la pagina Bienvenido.php
@@ -41,6 +42,11 @@ and open the template in the editor.
 
             $_SESSION['inicio'] = true;
             $conexion = new Conexion("localhost", "dani", "dani", "personas");
+        }
+        //si vengo del boton cerrar sesion, pongo a true una variable de sesion
+        else if(isset ($cerrarsesion)){
+            
+            $_SESSION['cerrarsesion'] = true;
         }
         ?>
 

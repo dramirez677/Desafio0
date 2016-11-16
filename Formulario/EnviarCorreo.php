@@ -11,6 +11,8 @@ and open the template in the editor.
     </head>
     <body>
         <?php
+        ini_set("SMTP", "ssl://smtp.gmail.com");
+        ini_set("smtp_port","465");
         
 //            $para = 'daw2prueba@gmail.com';
 //            $titulo = 'daw2_123456';

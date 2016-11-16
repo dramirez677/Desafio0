@@ -77,6 +77,7 @@ a{
 label{
     
     font-size: 17px;
+    padding-right: 69%;
 }
 
 .buttonregistro{
@@ -84,4 +85,11 @@ label{
     width: 100%;
     margin: auto;
 }
+
+.divbienvenido{
+    
+    font-size: 20px;
+    padding-right: 100px;
+}
+
 
