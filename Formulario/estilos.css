@@ -1,0 +1,97 @@
+body{
+    
+    margin: 0px;
+    background-color: lightblue;
+}
+
+.divlogin{
+    
+    width: 15%;
+    margin: auto;
+    
+}
+
+.divimgregistro{
+    
+    width: 15%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    
+}
+
+.divregistro{
+    
+    width: 30%;
+    margin: auto;
+}
+
+.errorlogin{
+    
+    background-color: lightyellow;
+    text-align: center;
+}
+
+.errorregistro{
+    
+    background-color: lightyellow;
+    text-align: center;
+}
+
+a{
+    
+    font-size: 15px;
+}
+
+.divimgprincipal{
+    
+    width: 15%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+
+.imgprincipal{
+    
+    width: 100%;
+}
+
+.imgregistro{
+    
+    width: 80%;
+    margin: auto;
+}
+
+.inputslogin{
+    
+    width: 230px;
+}
+
+.inputbuttons{
+    
+    width: 100px;
+}
+
+.buttonreiniciar{
+    
+    margin-left: 10%;
+}
+
+
+.inputsregistro{
+    
+    width: 100%;
+}
+
+label{
+    
+    font-size: 17px;
+}
+
+.buttonregistro{
+    
+    width: 100%;
+    margin: auto;
+}
+
